@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <span id="mobile-menu-button" onclick="toggleMenu()">&#9776;</span> <!-- Ícone de três barras -->
+
+        <aside id="menu">
+
+            <div class="logo">
+              <img src="img/logoEPI.png" alt="logotipo"><h1>EPI'Sistem</h1>
+            </div>
+
+            
+            <ul>
+                <h1>GERAL</h1>
+                <li><a href="#"><img src="img/dashboard.png" alt="">Dashboard</a><strong>&#10139;</strong></li>
+                <li><a href="#"><img src="img/cadEPI.png" alt="">Cadastrar EPI</a><strong>&#10139;</strong></li>
+                <li><a href="#"><img src="img/entEPI.png" alt="">Entregar EPI</a><strong>&#10139;</strong></li>
+            </ul>
+            <ul>
+                <h1>EXTRA</h1>
+                <li><a href="#"><img src="img/regUSER.png" alt="">Cadastrar Trabalhador</a><strong>&#10139;</strong></li>
+                <li><a href="#"><img src="img/trolley.png" alt="">Movimentação</a><strong>&#10139;</strong></li>
+            </ul>
+
+        </aside>      
+
+
+
+        <article>
+            <h1>Criar Nota</h1>
+            <div class="container">
+                <div class="form-div"> 
+                    <form action="{% url 'criarNota' %}" method="post">
+                        <label for="title">Título:</label>
+                        <input type="text" name="title" id="title" required >
+                
+                        <label for="opcoes">Setor:</label>
+                        <select name="opcoes" id="opcoes" required>
+                            <option value="" disabled selected>Selecione um setor</option>
+                
+                            {% for setor in setores %}
+                            <option value="{{ setor.id }}">{{ setor.nomeSetor }}</option>
+                            {% endfor %}
+                
+                        </select>
+                
+                        <label for="tag" >Tag:</label>
+                        <input type="text" name="tag" id="tag" required maxlength="12">
+                
+                        <label for="data_criacao">Data:</label>
+                        <input type="datetime-local" name="data_criacao" id="data_criacao" required>
+                        <br><br>
+                
+                        <label for="cnota">Detalhe o máximo possível do serviço abaixo.</label>
+                        <textarea name="cnota" id="cnota" required></textarea>
+                
+                        <input type="submit" value="Criar Nota">
+                
+                    </form>
+                </div> 
+
+                <div class="info-div"> 
+
+                    <div class="content"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/2560px-Python_logo_and_wordmark.svg.png" alt="Logo do Python"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quo reiciendis quam ex facere totam accusamus deserunt molestias voluptatem neque corporis, incidunt voluptatibus a quos dolor, nam vero repellat repudiandae.</p></div>
+                    <hr>
+                    <div class="content"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/2560px-Python_logo_and_wordmark.svg.png" alt="Logo do Python"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quo reiciendis quam ex facere totam accusamus deserunt molestias voluptatem neque corporis, incidunt voluptatibus a quos dolor, nam vero repellat repudiandae.</p></div>                </div>
+                
+            </div>
+            
+
+            <!-- Rodapé -->
+            <footer> 
+                <p>Copyright &copy; 2024.</p>
+                <p>Desenvolvido por Jonathas Oliveira. <a href="https://www.linkedin.com/in/jonathasrobison/" target="_blank">  <img src="img/linkedin.png" alt="linkedin"></a></p>
+                <p>Linguagem de programação Python. <a href="https://docs.python.org/3/" target="_blank" rel="noopener noreferrer"> <img src="img/python.png" alt="python"></a> </p>   
+            </footer>
+            <!-- Fim do rodapé --> 
+
+        </article>
+
+    </div>    
+    <script src="script.js"></script>   
+</body>
+
+</html>
